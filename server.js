@@ -6,10 +6,13 @@ var express = require('express');
 //initialize app as an express application
 var app = express();
 
-var ipaddress = '127.0.0.1';
-var port      = 3000;
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname+'/public'));
-app.listen(port, ipaddress);
+require ("./test/app.js")(app);
 
-console.log("hello world!");
+var port = process.env.PORT || 3000;
+
+app.listen(port);
