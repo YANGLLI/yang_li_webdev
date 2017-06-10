@@ -49,10 +49,7 @@
         }
 
         function deletePost(index) {
-            // $scope.posts.splice(index, 1);
-            $http
-                .delete('/api/post/' + index)
-                .then(findBlogPosts);
+             $scope.posts.splice(index, 1);
         }
     }
 })();
